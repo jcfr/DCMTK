@@ -37,6 +37,9 @@ MACRO(DCMTK_ADD_EXECUTABLE PROGRAM)
 
         # Associated .js extension so that emscripten generate js code
         IF(EMSCRIPTEN)
+          IF(DCMJS_PREJS_SCRIPT)
+            em_link_pre_js(${PROGRAM} ${DCMJS_PREJS_SCRIPT})
+          ENDIF()
           SET_PROPERTY(TARGET ${PROGRAM} PROPERTY OUTPUT_NAME ${PROGRAM}.js)
           find_program(GZIP_EXECUTABLE gzip)
           IF(GZIP_EXECUTABLE)
