@@ -41,7 +41,7 @@ MACRO(DCMTK_ADD_EXECUTABLE PROGRAM)
           find_program(GZIP_EXECUTABLE gzip)
           IF(GZIP_EXECUTABLE)
             ADD_CUSTOM_COMMAND(TARGET ${PROGRAM}
-              POST_BUILD COMMAND ${GZIP_EXECUTABLE} -k $<TARGET_FILE:${PROGRAM}>
+              POST_BUILD COMMAND ${GZIP_EXECUTABLE} -k -f $<TARGET_FILE:${PROGRAM}>
               COMMENT "Gzip'ing ${PROGRAM}.js"
               )
           ENDIF()
