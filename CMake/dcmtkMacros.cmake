@@ -35,6 +35,11 @@ MACRO(DCMTK_ADD_EXECUTABLE PROGRAM)
         # Collect executable as part of global DCMTK_EXECUTABLE_TARGETS property
         SET_PROPERTY(GLOBAL APPEND PROPERTY DCMTK_EXECUTABLE_TARGETS ${PROGRAM})
 
+        # Associated .js extension so that emscripten generate js code
+        IF(EMSCRIPTEN)
+          SET_PROPERTY(TARGET ${PROGRAM} PROPERTY OUTPUT_NAME ${PROGRAM}.js)
+        ENDIF()
+
         # declare installation files, also export DCMTKTargets.cmake
         INSTALL(TARGETS ${PROGRAM}
                 EXPORT DCMTKTargets
