@@ -58,7 +58,8 @@ static char rcsid[] = "$dcmtk: " OFFIS_CONSOLE_APPLICATION " v"
 #define SHORTCOL 4
 #define LONGCOL 21
 
-int main(int argc, char *argv[])
+#include "dcmtk/config/dcmcjpeg_app.h"
+DCMTK_DCMCJPEG_MAIN_FUNCTION
 {
 
 #ifdef HAVE_GUSI_H

@@ -32,7 +32,8 @@
 
 #define OFFIS_CONSOLE_APPLICATION "wlmscpfs"
 
-int main( int argc, char *argv[] )
+#include "dcmtk/config/wlmscpfs_app.h"
+DCMTK_WLMSCPFS_MAIN_FUNCTION
 {
   // Initialize object which provides a connection to the data source
   WlmDataSourceFileSystem *dataSource = new WlmDataSourceFileSystem();

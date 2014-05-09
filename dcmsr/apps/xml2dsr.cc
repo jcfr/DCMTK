@@ -55,7 +55,8 @@ static char rcsid[] = "$dcmtk: " OFFIS_CONSOLE_APPLICATION " v"
 #define LONGCOL 21
 
 
-int main(int argc, char *argv[])
+#include "dcmtk/config/xml2dsr_app.h"
+DCMTK_XML2DSR_MAIN_FUNCTION
 {
     OFBool opt_generateUIDs = OFFalse;
     OFBool opt_overwriteUIDs = OFFalse;

@@ -38,7 +38,8 @@ static char rcsid[] = "$dcmtk: " OFFIS_CONSOLE_APPLICATION " v"
   OFFIS_DCMTK_VERSION " " OFFIS_DCMTK_RELEASEDATE " $";
 
 
-int main(int argc, char *argv[])
+#include "dcmtk/config/dconvlum_app.h"
+DCMTK_DCONVLUM_MAIN_FUNCTION
 {
     /* check number of arguments */
     if ((argc >= 3) && (argc <= 4))

@@ -106,7 +106,8 @@ static void cleanChildren()
 #define SHORTCOL 3
 #define LONGCOL 12
 
-int main(int argc, char *argv[])
+#include "dcmtk/config/dcmprscp_app.h"
+DCMTK_DCMPRSCP_MAIN_FUNCTION
 {
 
 #ifdef HAVE_GUSI_H

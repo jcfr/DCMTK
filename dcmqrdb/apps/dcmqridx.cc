@@ -57,7 +57,8 @@ static char rcsid[] = "$dcmtk: " OFFIS_CONSOLE_APPLICATION " v"
 #define LONGCOL  12
 
 
-int main (int argc, char *argv[])
+#include "dcmtk/config/dcmqridx_app.h"
+DCMTK_DCMQRIDX_MAIN_FUNCTION
 {
     char sclass [120] ;
     char sinst  [120] ;

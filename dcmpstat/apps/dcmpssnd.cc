@@ -322,7 +322,8 @@ static OFCondition addAllStoragePresentationContexts(T_ASC_Parameters *params, i
 #define SHORTCOL 3
 #define LONGCOL 12
 
-int main(int argc, char *argv[])
+#include "dcmtk/config/dcmpssnd_app.h"
+DCMTK_DCMPSSND_MAIN_FUNCTION
 {
     OFString temp_str;
 #ifdef HAVE_GUSI_H

@@ -691,7 +691,8 @@ static int do_remove(
 #define SHORTCOL 4
 #define LONGCOL 21
 
-int main(int argc, char *argv[])
+#include "dcmtk/config/dcmsign_app.h"
+DCMTK_DCMSIGN_MAIN_FUNCTION
 {
 
 #ifdef HAVE_GUSI_H

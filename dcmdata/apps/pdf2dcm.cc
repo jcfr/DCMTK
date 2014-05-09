@@ -309,7 +309,8 @@ static void createIdentifiers(
 #define SHORTCOL 3
 #define LONGCOL 19
 
-int main(int argc, char *argv[])
+#include "dcmtk/config/pdf2dcm_app.h"
+DCMTK_PDF2DCM_MAIN_FUNCTION
 {
 
 #ifdef HAVE_GUSI_H

@@ -125,7 +125,8 @@ static OFCondition dumpFile(STD_NAMESPACE ostream &out,
 #define LONGCOL 22
 
 
-int main(int argc, char *argv[])
+#include "dcmtk/config/dsrdump_app.h"
+DCMTK_DSRDUMP_MAIN_FUNCTION
 {
     size_t opt_readFlags = 0;
     size_t opt_printFlags = DSRTypes::PF_shortenLongItemValues;

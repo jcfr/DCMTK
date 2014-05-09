@@ -613,7 +613,8 @@ static OFCondition updateJobList(
 #define SHORTCOL 3
 #define LONGCOL 15
 
-int main(int argc, char *argv[])
+#include "dcmtk/config/dcmprscu_app.h"
+DCMTK_DCMPRSCU_MAIN_FUNCTION
 {
 
 #ifdef HAVE_GUSI_H

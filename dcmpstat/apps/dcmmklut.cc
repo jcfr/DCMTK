@@ -662,7 +662,8 @@ static OFCondition createLUT(const unsigned int numberOfBits,
 #define SHORTCOL 3
 #define LONGCOL 14
 
-int main(int argc, char *argv[])
+#include "dcmtk/config/dcmmklut_app.h"
+DCMTK_DCMMKLUT_MAIN_FUNCTION
 {
     const char *opt_inName = NULL;                     /* in file name */
     const char *opt_outName = NULL;                    /* out file name */

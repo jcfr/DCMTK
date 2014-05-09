@@ -661,7 +661,8 @@ static OFCondition readXmlFile(const char *ifname,
 #define LONGCOL 21
 
 
-int main(int argc, char *argv[])
+#include "dcmtk/config/xml2dcm_app.h"
+DCMTK_XML2DCM_MAIN_FUNCTION
 {
     OFBool opt_metaInfo = OFTrue;
     OFBool opt_namespace = OFFalse;
