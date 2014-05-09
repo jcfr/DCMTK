@@ -27,7 +27,8 @@
 
 static OFLogger dcmodifyLogger = OFLog::getLogger("dcmtk.apps." OFFIS_CONSOLE_APPLICATION);
 
-int main(int argc, char *argv[])
+#include "dcmtk/config/dcmodify_app.h"
+DCMTK_DCMODIFY_MAIN_FUNCTION
 {
   int error_count = 0;
   MdfConsoleEngine engine(argc, argv, OFFIS_CONSOLE_APPLICATION);

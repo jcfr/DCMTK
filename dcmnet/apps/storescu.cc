@@ -178,7 +178,8 @@ checkUserIdentityResponse(T_ASC_Parameters *params);
 #define SHORTCOL 4
 #define LONGCOL 19
 
-int main(int argc, char *argv[])
+#include "dcmtk/config/storescu_app.h"
+DCMTK_STORESCU_MAIN_FUNCTION
 {
   OFOStringStream optStream;
 

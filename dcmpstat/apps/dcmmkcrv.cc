@@ -51,7 +51,8 @@ static char rcsid[] = "$dcmtk: " OFFIS_CONSOLE_APPLICATION " v"
 #define SHORTCOL 3
 #define LONGCOL 13
 
-int main(int argc, char *argv[])
+#include "dcmtk/config/dcmmkcrv_app.h"
+DCMTK_DCMMKCRV_MAIN_FUNCTION
 {
     const char *opt_inName = NULL;                     /* in file name */
     const char *opt_outName = NULL;                    /* out file name */

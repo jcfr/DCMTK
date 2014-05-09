@@ -395,7 +395,8 @@ static OFCondition dumpFile(STD_NAMESPACE ostream &out,
 #define LONGCOL 20
 
 
-int main(int argc, char *argv[])
+#include "dcmtk/config/drtdump_app.h"
+DCMTK_DRTDUMP_MAIN_FUNCTION
 {
     OFBool opt_printFilename = OFFalse;
     E_FileReadMode opt_readMode = ERM_autoDetect;

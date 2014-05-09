@@ -398,7 +398,8 @@ static OFCondition startConversion(OFCommandLine& cmd,
 }
 
 
-int main(int argc, char *argv[])
+#include "dcmtk/config/img2dcm_app.h"
+DCMTK_IMG2DCM_MAIN_FUNCTION
 {
 
   // variables for command line

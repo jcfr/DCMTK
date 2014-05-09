@@ -125,7 +125,8 @@ static OFCondition writeFile(STD_NAMESPACE ostream &out,
 #define LONGCOL 22
 
 
-int main(int argc, char *argv[])
+#include "dcmtk/config/dsr2xml_app.h"
+DCMTK_DSR2XML_MAIN_FUNCTION
 {
     size_t opt_readFlags = 0;
     size_t opt_writeFlags = 0;

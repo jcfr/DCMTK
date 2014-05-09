@@ -175,7 +175,8 @@ static OFCondition renderFile(STD_NAMESPACE ostream &out,
 #define LONGCOL 22
 
 
-int main(int argc, char *argv[])
+#include "dcmtk/config/dsr2html_app.h"
+DCMTK_DSR2HTML_MAIN_FUNCTION
 {
     size_t opt_readFlags = 0;
     size_t opt_renderFlags = DSRTypes::HF_renderDcmtkFootnote;
