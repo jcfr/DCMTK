@@ -16,7 +16,9 @@
 
 # Get and store all executable targets to DCMTKTargets.cmake within build's main dir
 get_property(DCMTK_EXECUTABLE_TARGETS GLOBAL PROPERTY DCMTK_EXECUTABLE_TARGETS)
-export(TARGETS ${DCMTK_EXECUTABLE_TARGETS} FILE "${DCMTK_BUILD_CMKDIR}/DCMTKTargets.cmake")
+if(DCMTK_EXECUTABLE_TARGETS)
+  export(TARGETS ${DCMTK_EXECUTABLE_TARGETS} FILE "${DCMTK_BUILD_CMKDIR}/DCMTKTargets.cmake")
+endif()
 
 # Get and store libraries to DCMTKTargets.cmake within the build's main dir
 get_property(DCMTK_LIBRARY_TARGETS GLOBAL PROPERTY DCMTK_LIBRARY_TARGETS)
