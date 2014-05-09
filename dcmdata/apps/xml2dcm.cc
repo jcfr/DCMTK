@@ -984,7 +984,8 @@ DCMTK_XML2DCM_MAIN_FUNCTION
 
 #else /* WITH_LIBXML */
 
-int main(int, char *[])
+#include "dcmtk/config/xml2dcm_app.h"
+DCMTK_XML2DCM_MAIN_FUNCTION
 {
   CERR << rcsid << OFendl << OFFIS_CONSOLE_DESCRIPTION << OFendl << OFendl
        << OFFIS_CONSOLE_APPLICATION " requires the libxml library." << OFendl
