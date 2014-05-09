@@ -66,7 +66,8 @@ static char rcsid[] = "$dcmtk: " OFFIS_CONSOLE_APPLICATION " v"
 #define SHORTCOL 4
 #define LONGCOL 21
 
-int main(int argc, char *argv[])
+#include "dcmtk/config/dcmrecv_app.h"
+DCMTK_DCMRECV_MAIN_FUNCTION
 {
     OFOStringStream optStream;
 

@@ -58,7 +58,8 @@ static char rcsid[] = "$dcmtk: " OFFIS_CONSOLE_APPLICATION " v"
 #define SHORTCOL 3
 #define LONGCOL 21
 
-int main(int argc, char *argv[])
+#include "dcmtk/config/dcmcjpls_app.h"
+DCMTK_DCMCJPLS_MAIN_FUNCTION
 {
 
   const char *opt_ifname = NULL;

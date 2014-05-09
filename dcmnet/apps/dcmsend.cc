@@ -104,7 +104,8 @@ static void cleanup()
 #define SHORTCOL 4
 #define LONGCOL 21
 
-int main(int argc, char *argv[])
+#include "dcmtk/config/dcmsend_app.h"
+DCMTK_DCMSEND_MAIN_FUNCTION
 {
     OFOStringStream optStream;
 

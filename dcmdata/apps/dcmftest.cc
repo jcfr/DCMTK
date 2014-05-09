@@ -39,7 +39,8 @@ static char rcsid[] = "$dcmtk: " OFFIS_CONSOLE_APPLICATION " v"
 
 // ********************************************
 
-int main(int argc, char *argv[])
+#include "dcmtk/config/dcmftest_app.h"
+DCMTK_DCMFTEST_MAIN_FUNCTION
 {
     OFConsoleApplication app(OFFIS_CONSOLE_APPLICATION , "Test if file uses DICOM part 10 format", rcsid);
     OFCommandLine cmd;

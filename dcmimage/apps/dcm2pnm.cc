@@ -118,7 +118,8 @@ enum E_FileType
 
 // ********************************************
 
-int main(int argc, char *argv[])
+#include "dcmtk/config/dcm2pnm_app.h"
+DCMTK_DCM2PNM_MAIN_FUNCTION
 {
     OFConsoleApplication app(OFFIS_CONSOLE_APPLICATION, consoleDescription, rcsid);
     OFCommandLine cmd;

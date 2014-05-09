@@ -67,7 +67,8 @@ static char rcsid[] = "$dcmtk: " OFFIS_CONSOLE_APPLICATION " v"
 
 // ********************************************
 
-int main(int argc, char *argv[])
+#include "dcmtk/config/dcmscale_app.h"
+DCMTK_DCMSCALE_MAIN_FUNCTION
 {
     OFConsoleApplication app(OFFIS_CONSOLE_APPLICATION, OFFIS_CONSOLE_DESCRIPTION, rcsid);
     OFCommandLine cmd;

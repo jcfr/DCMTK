@@ -57,7 +57,8 @@ static OFLogger pdf2dcmLogger = OFLog::getLogger("dcmtk.apps." OFFIS_CONSOLE_APP
 static char rcsid[] = "$dcmtk: " OFFIS_CONSOLE_APPLICATION " v"
 OFFIS_DCMTK_VERSION " " OFFIS_DCMTK_RELEASEDATE " $";
 
-int main(int argc, char *argv[])
+#include "dcmtk/config/pdf2dcm_app.h"
+DCMTK_PDF2DCM_MAIN_FUNCTION
 {
   OFConsoleApplication app(OFFIS_CONSOLE_APPLICATION, "Encapsulate PDF file into DICOM format", rcsid);
   OFCommandLine cmd;

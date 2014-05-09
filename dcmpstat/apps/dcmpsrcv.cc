@@ -850,7 +850,8 @@ static void terminateAllReceivers(DVConfiguration& dvi)
 #define SHORTCOL 3
 #define LONGCOL 12
 
-int main(int argc, char *argv[])
+#include "dcmtk/config/dcmpsrcv_app.h"
+DCMTK_DCMPSRCV_MAIN_FUNCTION
 {
     OFStandard::initializeNetwork();
 #ifdef WITH_OPENSSL

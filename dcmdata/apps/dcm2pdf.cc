@@ -90,7 +90,8 @@ static OFString replaceChars(const OFString &srcstr, const OFString &pattern, co
 #define SHORTCOL 3
 #define LONGCOL 20
 
-int main(int argc, char *argv[])
+#include "dcmtk/config/dcm2pdf_app.h"
+DCMTK_DCM2PDF_MAIN_FUNCTION
 {
   const char *opt_ifname = NULL;
   const char *opt_ofname = NULL;

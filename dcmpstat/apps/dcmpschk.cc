@@ -912,7 +912,8 @@ static int checkfile(const char *filename)
 #define SHORTCOL 3
 #define LONGCOL 12
 
-int main(int argc, char *argv[])
+#include "dcmtk/config/dcmpschk_app.h"
+DCMTK_DCMPSCHK_MAIN_FUNCTION
 {
     OFStandard::initializeNetwork();
 

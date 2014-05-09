@@ -44,7 +44,8 @@ static char rcsid[] = "$dcmtk: " OFFIS_CONSOLE_APPLICATION " v"
 // ********************************************
 
 
-int main(int argc, char *argv[])
+#include "dcmtk/config/dcmdspfn_app.h"
+DCMTK_DCMDSPFN_MAIN_FUNCTION
 {
     OFConsoleApplication app(OFFIS_CONSOLE_APPLICATION, "Export standard display curves to a text file", rcsid);
     OFCommandLine cmd;

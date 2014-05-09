@@ -785,7 +785,8 @@ readDumpFile(DcmMetaInfo *metaheader, DcmDataset *dataset,
 
 // ********************************************
 
-int main(int argc, char *argv[])
+#include "dcmtk/config/dump2dcm_app.h"
+DCMTK_DUMP2DCM_MAIN_FUNCTION
 {
 
     OFConsoleApplication app(OFFIS_CONSOLE_APPLICATION , "Convert ASCII dump to DICOM file", rcsid);

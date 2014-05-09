@@ -39,7 +39,8 @@ static char rcsid[] = "$dcmtk: " OFFIS_CONSOLE_APPLICATION " v"
   OFFIS_DCMTK_VERSION " " OFFIS_DCMTK_RELEASEDATE " $";
 
 
-int main(int argc, char *argv[])
+#include "dcmtk/config/dcod2lum_app.h"
+DCMTK_DCOD2LUM_MAIN_FUNCTION
 {
     int error = 0;
     /* check number of arguments */

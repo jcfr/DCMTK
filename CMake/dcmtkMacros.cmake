@@ -50,8 +50,46 @@ endfunction()
 # DCMTK_ADD_EXECUTABLE - macro which adds the needed setup for an executable
 # PROGRAM - name of the executable that we are called for
 #
-macro(DCMTK_ADD_EXECUTABLE PROGRAM)
+function(DCMTK_ADD_EXECUTABLE PROGRAM)
     if(BUILD_APPS)
+        option(BUILD_${PROGRAM}_APP "Build ${PROGRAM} application." ON)
+        mark_as_advanced(BUILD_${PROGRAM}_APP)
+        #message("-DBUILD_${PROGRAM}_APP:BOOL=${BUILD_${PROGRAM}_APP}")
+    endif()
+    if(NOT BUILD_APPS OR NOT BUILD_${PROGRAM}_APP)
+        return()
+    endif()
+        string(TOUPPER ${PROGRAM} PROGRAM_UPPER)
+        file(WRITE "${CMAKE_BINARY_DIR}/CMakeFiles/${PROGRAM}_app.h"
+"
+#ifndef __${PROGRAM}_APP_H
+#define __${PROGRAM}_APP_H
+#ifdef EMSCRIPTEN
+#include \"dcmtk/ofstd/ofdefine.h\"
+#ifdef ${PROGRAM}_EXPORTS
+#define DCMTK_${PROGRAM_UPPER}_EXPORT DCMTK_DECL_EXPORT
+#else
+#define DCMTK_${PROGRAM_UPPER}_EXPORT DCMTK_DECL_IMPORT
+#endif
+#define DCMTK_${PROGRAM_UPPER}_MAIN_FUNCTION int ${PROGRAM}_main(int argc, char *argv[])
+DCMTK_${PROGRAM_UPPER}_EXPORT DCMTK_${PROGRAM_UPPER}_MAIN_FUNCTION;
+#else
+#define DCMTK_${PROGRAM_UPPER}_MAIN_FUNCTION int main(int argc, char *argv[])
+#endif
+#endif
+")
+    configure_file(
+        ${CMAKE_BINARY_DIR}/CMakeFiles/${PROGRAM}_app.h
+        ${CMAKE_BINARY_DIR}/config/include/dcmtk/config/${PROGRAM}_app.h
+        )
+    if(EMSCRIPTEN)
+        add_library(${PROGRAM}${DCMTK_LIBRARY_SUFFIX} ${DCMTK_LIBRARY_TYPE} ${ARGN})
+        set_target_properties(${PROGRAM}${DCMTK_LIBRARY_SUFFIX} PROPERTIES ${DCMTK_LIBRARY_PROPERTIES})
+
+        # Collect executable as part of global DCMTK_EXECUTABLE_TARGETS property
+        set_property(GLOBAL APPEND PROPERTY DCMTK_EXECUTABLE_TARGETS ${PROGRAM})
+
+    else()
         add_executable(${PROGRAM} ${ARGN})
 
         # Make wildcard arguments work
@@ -68,7 +106,7 @@ macro(DCMTK_ADD_EXECUTABLE PROGRAM)
                 COMPONENT bin
                 DESTINATION ${CMAKE_INSTALL_BINDIR})
     endif()
-endmacro()
+endfunction()
 
 #
 # Setup a library

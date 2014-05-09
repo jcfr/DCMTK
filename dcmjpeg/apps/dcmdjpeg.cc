@@ -50,7 +50,8 @@ static char rcsid[] = "$dcmtk: " OFFIS_CONSOLE_APPLICATION " v"
 #define SHORTCOL 4
 #define LONGCOL 21
 
-int main(int argc, char *argv[])
+#include "dcmtk/config/dcmdjpeg_app.h"
+DCMTK_DCMDJPEG_MAIN_FUNCTION
 {
 
   const char *opt_ifname = NULL;

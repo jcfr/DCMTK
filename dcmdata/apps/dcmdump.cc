@@ -148,7 +148,8 @@ static OFBool addPrintTagName(const char *tagName)
 #define LONGCOL 21
 
 // this macro either expands to main() or wmain()
-DCMTK_MAIN_FUNCTION
+#include "dcmtk/config/dcmdump_app.h"
+DCMTK_DCMDUMP_MAIN_FUNCTION
 {
     OFBool loadIntoMemory = OFTrue;
     size_t printFlags = DCMTypes::PF_shortenLongTagValues;

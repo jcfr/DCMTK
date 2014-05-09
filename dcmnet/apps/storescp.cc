@@ -208,7 +208,8 @@ extern "C" void sigChildHandler(int)
 #define SHORTCOL 4
 #define LONGCOL 21
 
-int main(int argc, char *argv[])
+#include "dcmtk/config/storescp_app.h"
+DCMTK_STORESCP_MAIN_FUNCTION
 {
   T_ASC_Network *net;
   DcmAssociationConfiguration asccfg;

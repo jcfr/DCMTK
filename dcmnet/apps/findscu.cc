@@ -50,7 +50,8 @@ static char rcsid[] = "$dcmtk: " OFFIS_CONSOLE_APPLICATION " v"
 #define SHORTCOL 4
 #define LONGCOL 20
 
-int main(int argc, char *argv[])
+#include "dcmtk/config/findscu_app.h"
+DCMTK_FINDSCU_MAIN_FUNCTION
 {
     OFList<OFString>      fileNameList;
     OFBool                opt_abortAssociation = OFFalse;

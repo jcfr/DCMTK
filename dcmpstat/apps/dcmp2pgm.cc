@@ -416,7 +416,8 @@ static void dumpPresentationState(DVPresentationState &ps)
 #define SHORTCOL 3
 #define LONGCOL 13
 
-int main(int argc, char *argv[])
+#include "dcmtk/config/dcmp2pgm_app.h"
+DCMTK_DCMP2PGM_MAIN_FUNCTION
 {
     OFBool opt_dump_pstate     = OFFalse;                 /* default: do not dump presentation state */
     OFBool opt_dicom_mode      = OFFalse;                 /* default: create PGM, not DICOM SC */

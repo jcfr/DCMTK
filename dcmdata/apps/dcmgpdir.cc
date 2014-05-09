@@ -100,7 +100,8 @@ static OFLogger dcmgpdirLogger = OFLog::getLogger("dcmtk.dcmdata." OFFIS_CONSOLE
 // ********************************************
 
 // this macro either expands to main() or wmain()
-DCMTK_MAIN_FUNCTION
+#include "dcmtk/config/dcmgpdir_app.h"
+DCMTK_DCMGPDIR_MAIN_FUNCTION
 {
     OFBool opt_write = OFTrue;
     OFBool opt_append = OFFalse;

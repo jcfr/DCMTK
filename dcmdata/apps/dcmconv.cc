@@ -78,7 +78,8 @@ static DcmTagKey parseTagKey(const char *tagName)
   }
 }
 
-int main(int argc, char *argv[])
+#include "dcmtk/config/dcmconv_app.h"
+DCMTK_DCMCONV_MAIN_FUNCTION
 {
   const char *opt_ifname = NULL;
   const char *opt_ofname = NULL;

@@ -85,7 +85,8 @@ static OFCondition writeFile(STD_NAMESPACE ostream &out,
 #define SHORTCOL 3
 #define LONGCOL 20
 
-int main(int argc, char *argv[])
+#include "dcmtk/config/dcm2json_app.h"
+DCMTK_DCM2JSON_MAIN_FUNCTION
 {
     OFBool opt_format = OFTrue;
     OFBool opt_addMetaInformation = OFFalse;

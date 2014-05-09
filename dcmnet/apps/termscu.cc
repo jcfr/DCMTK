@@ -53,7 +53,8 @@ static OFLogger termscuLogger = OFLog::getLogger("dcmtk.apps." OFFIS_CONSOLE_APP
 
 // ----------------------------------------------------------------------------
 
-int main( int argc, char *argv[] )
+#include "dcmtk/config/termscu_app.h"
+DCMTK_TERMSCU_MAIN_FUNCTION
 // Date       : September 12, 2005
 // Author     : Thomas Wilkens
 // Task       : Main function for this application.
