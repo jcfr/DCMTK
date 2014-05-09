@@ -61,7 +61,8 @@ static char rcsid[] = "$dcmtk: " OFFIS_CONSOLE_APPLICATION " v"
 #define SHORTCOL 3
 #define LONGCOL 21
 
-int main(int argc, char *argv[])
+#include "dcmtk/config/dcmdjpls_app.h"
+DCMTK_DCMDJPLS_MAIN_FUNCTION
 {
 
 #ifdef HAVE_GUSI_H

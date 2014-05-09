@@ -78,7 +78,8 @@ extern "C" void TI_signalHandler(int)
   exit( 1 );
 }
 
-int main( int argc, char *argv[] )
+#include "dcmtk/config/dcmqrti_app.h"
+DCMTK_DCMQRTI_MAIN_FUNCTION
 {
 
   const char *remoteDBTitles[ MAXREMOTEDBTITLES ];

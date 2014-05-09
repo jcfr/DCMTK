@@ -218,7 +218,8 @@ static OFCondition writeFile(STD_NAMESPACE ostream &out,
 #define LONGCOL 20
 
 
-int main(int argc, char *argv[])
+#include "dcmtk/config/dcm2xml_app.h"
+DCMTK_DCM2XML_MAIN_FUNCTION
 {
     size_t opt_writeFlags = 0;
     OFBool opt_loadIntoMemory = OFFalse;

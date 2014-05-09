@@ -111,7 +111,8 @@ static int addOverlay(const char *filename,
 #define SHORTCOL 2
 #define LONGCOL 21
 
-int main(int argc, char *argv[])
+#include "dcmtk/config/dcmpsprt_app.h"
+DCMTK_DCMPSPRT_MAIN_FUNCTION
 {
     const char *              opt_printerID = NULL;             /* printer ID */
     const char *              opt_cfgName = NULL;               /* config read file name */
