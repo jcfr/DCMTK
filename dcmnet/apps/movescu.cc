@@ -209,8 +209,8 @@ addPresentationContext(T_ASC_Parameters *params,
 #define SHORTCOL 4
 #define LONGCOL 21
 
-int
-main(int argc, char *argv[])
+#include "dcmtk/config/movescu_app.h"
+DCMTK_MOVESCU_MAIN_FUNCTION
 {
     T_ASC_Parameters *params = NULL;
     const char *opt_peer;

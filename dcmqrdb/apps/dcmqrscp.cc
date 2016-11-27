@@ -99,8 +99,8 @@ OFCmdUnsignedInt opt_port = 0;
 #define SHORTCOL 4
 #define LONGCOL 22
 
-int
-main(int argc, char *argv[])
+#include "dcmtk/config/dcmqrscp_app.h"
+DCMTK_DCMQRSCP_MAIN_FUNCTION
 {
   OFCondition cond = EC_Normal;
   OFCmdUnsignedInt overridePort = 0;
