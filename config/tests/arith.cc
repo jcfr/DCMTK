@@ -110,7 +110,7 @@ static int print_flag( STD_NAMESPACE ostream& out, int flag,
                        const char* fname, const char* name,
                        int width )
 {
-    COUT << STD_NAMESPACE setw(width) << STD_NAMESPACE internal << ( flag ? "yes" : "no" );
+    //COUT << STD_NAMESPACE setw(width) << STD_NAMESPACE internal << ( flag ? "yes" : "no" );
     print_define( out, fname, name );
     out << " OF" << ( flag ? "True" : "False" ) << '\n';
     return flag;
@@ -198,10 +198,10 @@ static void divide_by_zero()
 template<typename T>
 static void inspect( STD_NAMESPACE ostream& out, const char* name )
 {
-    COUT << "--   " << STD_NAMESPACE left << STD_NAMESPACE setw(14) << name;
+    //COUT << "--   " << STD_NAMESPACE left << STD_NAMESPACE setw(14) << name;
     print_flag( out, test_trap( &divide_by_zero<T> ), "TRAPS", name, 7 );
     print_flag( out, test_modulo<T>(), "MODULO", name, 7 );
-    COUT << OFendl;
+    //COUT << OFendl;
 }
 
 // print a constant's binary representation as a string, so it can be loaded
@@ -437,7 +437,7 @@ static void test_subnormal( STD_NAMESPACE ostream& out, const char* name )
 #endif
     const T denorm = guess<T>::denorm_min();
     const int flag = is_subnormal( denorm );
-    COUT << STD_NAMESPACE setw(7) << STD_NAMESPACE internal << ( flag ? "yes" : "no" );
+    //COUT << STD_NAMESPACE setw(7) << STD_NAMESPACE internal << ( flag ? "yes" : "no" );
     print_define( out, "HAS_DENORM", name );
     out << " OFdenorm_" << ( flag ? "pre" : "ab" ) << "sent\n";
     print_binary( out, "DENORM_MIN", name, denorm );
@@ -525,15 +525,16 @@ int main( int argc, char** argv )
     SetUnhandledExceptionFilter( consume_seh_problems );
 #endif
 
-    COUT << "Inspecting fundamental arithmetic types... " << OFendl;
-    if( argc != 2 )
-    {
-        STD_NAMESPACE cerr << "--   " << "Error: missing destination file "
-                           << "to store collected information." << OFendl;
-        return 1;
-    }
+    //COUT << "Inspecting fundamental arithmetic types... " << OFendl;
+    //if( argc != 2 )
+    //{
+    //    STD_NAMESPACE cerr << "--   " << "Error: missing destination file "
+    //                       << "to store collected information." << OFendl;
+    //    return 1;
+    //}
 
-    STD_NAMESPACE ofstream out( argv[1] );
+    //STD_NAMESPACE ofstream out( argv[1] );
+    #define out COUT
 
     out << "#ifndef CONFIG_ARITH_H" << '\n';
     out << "#define CONFIG_ARITH_H" << '\n';
@@ -551,7 +552,7 @@ int main( int argc, char** argv )
     out << "#define DCMTK_FLOAT_MAX_DIGITS10 " << OFstatic_cast( int, FLT_MANT_DIG * .30102999566398119521373889472449 + 2 ) << OFendl;
     out << "#define DCMTK_DOUBLE_MAX_DIGITS10 " << OFstatic_cast( int, DBL_MANT_DIG * .30102999566398119521373889472449 + 2 ) << OFendl;
 
-    COUT << "--" << OFendl;
+    //COUT << "--" << OFendl;
 
     //COUT << "-- " << STD_NAMESPACE setfill( ' ' ) << STD_NAMESPACE setw(17) << ' '
     //          << STD_NAMESPACE setw(7) << STD_NAMESPACE internal << "TRAPS"
@@ -567,53 +568,53 @@ int main( int argc, char** argv )
     inspect<signed long>( out, "signed long" );
     inspect<unsigned long>( out, "unsigned long" );
 
-    COUT << "--" << OFendl;
+    //COUT << "--" << OFendl;
 
-    COUT << "-- " << STD_NAMESPACE setfill( ' ' ) << STD_NAMESPACE setw(18) << ' '
-              << STD_NAMESPACE setw(7) << STD_NAMESPACE internal << "float"
-              << STD_NAMESPACE setw(7) << STD_NAMESPACE internal << "double" << OFendl;
+    //COUT << "-- " << STD_NAMESPACE setfill( ' ' ) << STD_NAMESPACE setw(18) << ' '
+    //          << STD_NAMESPACE setw(7) << STD_NAMESPACE internal << "float"
+    //          << STD_NAMESPACE setw(7) << STD_NAMESPACE internal << "double" << OFendl;
 
-    COUT << STD_NAMESPACE setw(20) << STD_NAMESPACE left << "--   TRAPS";
+    //COUT << STD_NAMESPACE setw(20) << STD_NAMESPACE left << "--   TRAPS";
     print_flag( out, test_trap( &divide_by_zero<float> ), "TRAPS", "float", 7 );
     print_flag( out, test_trap( &divide_by_zero<double> ), "TRAPS", "double", 7 );
-    COUT << OFendl;
+    //COUT << OFendl;
 
-    COUT << STD_NAMESPACE setw(20) << STD_NAMESPACE left << "--   HAS INFINITY";
+    //COUT << STD_NAMESPACE setw(20) << STD_NAMESPACE left << "--   HAS INFINITY";
     const int finf = test_inf<float>( out, "float" );
     const int dinf = test_inf<double>( out, "double" );
-    COUT << OFendl;
+    //COUT << OFendl;
 
-    COUT << STD_NAMESPACE setw(20) << STD_NAMESPACE left << "--   QUIET NAN";
+    //COUT << STD_NAMESPACE setw(20) << STD_NAMESPACE left << "--   QUIET NAN";
     const int fqnan = test_qnan<float>( out, "float" );
     const int dqnan = test_qnan<double>( out, "double" );
-    COUT << OFendl;
+    //COUT << OFendl;
 
-    COUT << STD_NAMESPACE setw(20) << STD_NAMESPACE left << "--   SIGNALING NAN";
+    //COUT << STD_NAMESPACE setw(20) << STD_NAMESPACE left << "--   SIGNALING NAN";
     const int fsnan = test_snan<float>( out, "float" );
     const int dsnan = test_snan<double>( out, "double" );
-    COUT << OFendl;
+    //COUT << OFendl;
 
-    COUT << STD_NAMESPACE setw(20) << STD_NAMESPACE left << "--   IEC-559";
+    //COUT << STD_NAMESPACE setw(20) << STD_NAMESPACE left << "--   IEC-559";
     test_iec559<float>( out, "float", finf && fqnan && fsnan );
     test_iec559<double>( out, "double", dinf && dqnan && dsnan );
-    COUT << OFendl;
+    //COUT << OFendl;
 
-    COUT << STD_NAMESPACE setw(20) << STD_NAMESPACE left << "--   HAS DENORM";
+    //COUT << STD_NAMESPACE setw(20) << STD_NAMESPACE left << "--   HAS DENORM";
     test_subnormal<float>( out, "float" );
     test_subnormal<double>( out, "double" );
-    COUT << OFendl;
+    //COUT << OFendl;
 
-    COUT << STD_NAMESPACE setw(20) << STD_NAMESPACE left << "--   TINYNESS BEFORE";
+    //COUT << STD_NAMESPACE setw(20) << STD_NAMESPACE left << "--   TINYNESS BEFORE";
     test_tinyness_before<float>( out, "float" );
     test_tinyness_before<double>( out, "double" );
-    COUT << OFendl;
+    //COUT << OFendl;
 
-    COUT << STD_NAMESPACE setw(20) << STD_NAMESPACE left << "--   DENORM LOSS";
+    //COUT << STD_NAMESPACE setw(20) << STD_NAMESPACE left << "--   DENORM LOSS";
     test_denorm_loss<float>( out, "float" );
     test_denorm_loss<double>( out, "double" );
-    COUT << OFendl;
+    //COUT << OFendl;
 
-    COUT << "--";
+    //COUT << "--";
 
     out << "#define DCMTK_ROUND_STYLE " << FLT_ROUNDS << '\n';
     out << '\n';

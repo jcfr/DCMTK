@@ -1365,7 +1365,7 @@ function(INSPECT_FUNDAMENTAL_ARITHMETIC_TYPES)
       COMPILE_DEFINITIONS -I"${DCMTK_BINARY_DIR}/config/include" -I"${DCMTK_SOURCE_DIR}/ofstd/include" -I"${DCMTK_SOURCE_DIR}/ofstd/libsrc"
       RUN_OUTPUT_VARIABLE OUTPUT
       COMPILE_OUTPUT_VARIABLE CERR
-      ARGS "\\\"${ARITH_H_FILE}\\\""
+      #ARGS "\\\"${ARITH_H_FILE}\\\""
     )
     if(COMPILED)
       if(NOT RESULT)
@@ -1375,6 +1375,8 @@ function(INSPECT_FUNDAMENTAL_ARITHMETIC_TYPES)
             DCMTK_ANDROID_PULL(DCMTK_ANDROID_EMULATOR_INSTANCE "${ARITH_H_FILE}" DESTINATION "${ARITH_H_DESTINATION}")
           endif()
         endif()
+        message(STATUS "Generating ${ARITH_H_FILE}")
+        file(WRITE ${ARITH_H_FILE} ${OUTPUT})
       else()
         message(FATAL_ERROR "${OUTPUT}")
       endif()
