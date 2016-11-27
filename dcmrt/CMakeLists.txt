@@ -5,6 +5,6 @@ project(dcmrt)
 include_directories("${dcmrt_SOURCE_DIR}/include" "${ofstd_SOURCE_DIR}/include" "${oflog_SOURCE_DIR}/include" "${dcmdata_SOURCE_DIR}/include" ${ZLIB_INCDIR})
 
 # recurse into subdirectories
-foreach(SUBDIR libsrc apps tests include)
+foreach(SUBDIR libsrc apps include) # tests)
   add_subdirectory(${SUBDIR})
 endforeach()
