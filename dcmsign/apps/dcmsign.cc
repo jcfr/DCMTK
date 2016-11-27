@@ -1164,7 +1164,8 @@ DCMTK_DCMSIGN_MAIN_FUNCTION
 
 #else /* WITH_OPENSSL */
 
-int main(int, char *[])
+#include "dcmtk/config/dcmsign_app.h"
+DCMTK_DCMSIGN_MAIN_FUNCTION
 {
   CERR << rcsid << OFendl << APPLICATION_ABSTRACT << OFendl << OFendl
        << OFFIS_CONSOLE_APPLICATION " requires the OpenSSL library." << OFendl

@@ -77,8 +77,8 @@ static void applyOverrideKeys(DcmDataset *dataset);
 #define SHORTCOL 4
 #define LONGCOL 21
 
-int
-main(int argc, char *argv[])
+#include "dcmtk/config/getscu_app.h"
+DCMTK_GETSCU_MAIN_FUNCTION
 {
   const char *opt_peer;
   OFCmdUnsignedInt opt_port = 104;;

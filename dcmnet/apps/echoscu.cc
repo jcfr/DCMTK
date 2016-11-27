@@ -122,8 +122,8 @@ static const char* transferSyntaxes[] = {
 #define SHORTCOL 4
 #define LONGCOL 19
 
-int
-main(int argc, char *argv[])
+#include "dcmtk/config/echoscu_app.h"
+DCMTK_ECHOSCU_MAIN_FUNCTION
 {
   OFOStringStream optStream;
   int result = EXITCODE_NO_ERROR;
