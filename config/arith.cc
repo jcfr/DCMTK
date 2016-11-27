@@ -319,7 +319,7 @@ static void provoke_snan()
     _controlfp( _controlfp(0,0) & ~_EM_INVALID, _MCW_EM );
 #elif defined(__APPLE__)
     _MM_SET_EXCEPTION_MASK( _MM_GET_EXCEPTION_MASK() & ~_MM_MASK_INVALID );
-#elif defined(HAVE_FENV_H)
+#elif defined(HAVE_FENV_H) && defined(HAVE_FEENABLEEXCEPT)
     feenableexcept( FE_INVALID );
 #endif
     // Visual Studio will emit an exception the moment
@@ -347,7 +347,9 @@ static int test_snan( STD_NAMESPACE ostream& out, const char* name )
 #ifdef __APPLE__
     _MM_SET_EXCEPTION_MASK( _MM_GET_EXCEPTION_MASK() | _MM_MASK_INVALID );
 #else
+# ifdef HAVE_FEDISABLEEXCEPT
     fedisableexcept( FE_INVALID );
+# endif
 #endif
 #endif
     // Print and return the result

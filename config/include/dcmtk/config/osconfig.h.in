@@ -197,6 +197,12 @@
 /* Define to 1 if you have the <fenv.h> header file. */
 #undef HAVE_FENV_H
 
+/* Define to 1 if you have the `fedisableexcept' function. */
+#undef HAVE_FEDISABLEEXCEPT
+
+/* Define to 1 if you have the `feenableexcept' function. */
+#undef HAVE_FEENABLEEXCEPT
+
 /* Define to 1 if you have the `finite' function. */
 #undef HAVE_FINITE
 
