@@ -132,6 +132,7 @@ static int test_modulo()
 template<typename FN>
 static int test_trap( const FN& fn )
 {
+/*
     register_signals();
 #ifndef _WIN32
     // On Unix like systems, we use the
@@ -173,6 +174,7 @@ static int test_trap( const FN& fn )
     // means "normal exception".
     catch(...){return 2;}
 #endif
+*/
     // Nothing happened, so we return 0, for
     // "nothing happened". Note: since MinGW's
     // crazy SEH things are crazy, MinGW will always
@@ -551,9 +553,9 @@ int main( int argc, char** argv )
 
     COUT << "--" << OFendl;
 
-    COUT << "-- " << STD_NAMESPACE setfill( ' ' ) << STD_NAMESPACE setw(17) << ' '
-              << STD_NAMESPACE setw(7) << STD_NAMESPACE internal << "TRAPS"
-              << STD_NAMESPACE setw(7) << STD_NAMESPACE internal << "MODULO" << OFendl;
+    //COUT << "-- " << STD_NAMESPACE setfill( ' ' ) << STD_NAMESPACE setw(17) << ' '
+    //          << STD_NAMESPACE setw(7) << STD_NAMESPACE internal << "TRAPS"
+    //          << STD_NAMESPACE setw(7) << STD_NAMESPACE internal << "MODULO" << OFendl;
 
     inspect<char>( out, "char" );
     inspect<signed char>( out, "signed char" );
