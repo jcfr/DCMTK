@@ -36,7 +36,7 @@
 #endif /* LIBXML_SCHEMAS_ENABLED */
 
 // This function is also used in xml2dcm, try to stay in sync!
-extern "C" void errorFunction(void * ctx, const char *msg, ...)
+extern "C" void errorDsrXmldFunction(void * ctx, const char *msg, ...)
 {
     OFLogger xmlLogger = OFLog::getLogger("dcmtk.dcmsr.libxml");
 
@@ -139,7 +139,7 @@ OFCondition DSRXMLDocument::read(const OFString &filename,
                                  const size_t flags)
 {
     OFCondition result = SR_EC_InvalidDocument;
-    /* temporary buffer needed for errorFunction - more detailed explanation there */
+    /* temporary buffer needed for errorDsrXmldFunction - more detailed explanation there */
     OFString tmpErrorString;
     /* first remove any possibly existing document from memory */
     clear();
@@ -149,7 +149,7 @@ OFCondition DSRXMLDocument::read(const OFString &filename,
     xmlLineNumbersDefault(1);
     /* enable libxml warnings and error messages */
     xmlGetWarningsDefaultValue = 1;
-    xmlSetGenericErrorFunc(&tmpErrorString, errorFunction);
+    xmlSetGenericErrorFunc(&tmpErrorString, errorDsrXmldFunction);
 
     xmlGenericError(xmlGenericErrorContext, "--- libxml parsing ------\n");
     /* build an XML tree from the given file */
@@ -165,13 +165,13 @@ OFCondition DSRXMLDocument::read(const OFString &filename,
 #if 1
             /* create context for Schema validation */
             xmlSchemaParserCtxtPtr context = xmlSchemaNewParserCtxt(DCMSR_XML_XSD_FILE);
-            xmlSchemaSetParserErrors(context, errorFunction, errorFunction, &tmpErrorString);
+            xmlSchemaSetParserErrors(context, errorDsrXmldFunction, errorDsrXmldFunction, &tmpErrorString);
             /* parse Schema file */
             xmlSchemaPtr schema = xmlSchemaParse(context);
             if (schema != NULL)
             {
                 xmlSchemaValidCtxtPtr validCtx = xmlSchemaNewValidCtxt(schema);
-                xmlSchemaSetValidErrors(validCtx, errorFunction, errorFunction, &tmpErrorString);
+                xmlSchemaSetValidErrors(validCtx, errorDsrXmldFunction, errorDsrXmldFunction, &tmpErrorString);
                 /* validate the document */
                 isValid = (xmlSchemaValidateDoc(validCtx, Document) == 0);
                 xmlSchemaFreeValidCtxt(validCtx);
@@ -184,7 +184,7 @@ OFCondition DSRXMLDocument::read(const OFString &filename,
 
             /* create context for Schema validation */
             xmlSchemaValidCtxtPtr context = xmlSchemaNewValidCtxt(NULL);
-            xmlSchemaSetValidErrors(context, errorFunction, errorFunction, &tmpErrorString);
+            xmlSchemaSetValidErrors(context, errorDsrXmldFunction, errorDsrXmldFunction, &tmpErrorString);
             /* validate the document */
             isValid = (xmlSchemaValidateDoc(context, Document) == 0);
 #endif

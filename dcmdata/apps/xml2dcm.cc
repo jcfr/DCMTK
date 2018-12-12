@@ -58,7 +58,7 @@ static char rcsid[] = "$dcmtk: " OFFIS_CONSOLE_APPLICATION " v"
 static xmlCharEncodingHandlerPtr EncodingHandler = NULL;
 
 // This function is also used in dcmsr, try to stay in sync!
-extern "C" void errorFunction(void * ctx, const char *msg, ...)
+extern "C" void errorXml2DcmFunction(void * ctx, const char *msg, ...)
 {
 #if defined(HAVE_VSNPRINTF) && defined(HAVE_PROTOTYPE_VSNPRINTF)
     // Classic C requires us to declare variables at the beginning of the function.
@@ -530,13 +530,13 @@ static OFCondition validateXmlDocument(xmlDocPtr doc)
     OFCondition result = EC_Normal;
     OFLOG_INFO(xml2dcmLogger, "validating XML document ...");
     xmlGenericError(xmlGenericErrorContext, "--- libxml validating ---\n");
-    /* temporary buffer needed for errorFunction - more detailed explanation there */
+    /* temporary buffer needed for errorXml2DcmFunction - more detailed explanation there */
     OFString tmpErrorString;
     /* create context for document validation */
     xmlValidCtxt cvp;
     cvp.userData = &tmpErrorString;
-    cvp.error = errorFunction;
-    cvp.warning = errorFunction;
+    cvp.error = errorXml2DcmFunction;
+    cvp.warning = errorXml2DcmFunction;
     /* validate the document */
     const int valid = xmlValidateDocument(&cvp, doc);
     xmlGenericError(xmlGenericErrorContext, "-------------------------\n");
@@ -889,7 +889,7 @@ DCMTK_XML2DCM_MAIN_FUNCTION
 
     /* check for compatible libxml version */
     LIBXML_TEST_VERSION
-    /* temporary buffer needed for errorFunction - more detailed explanation there */
+    /* temporary buffer needed for errorXml2DcmFunction - more detailed explanation there */
     OFString tmpErrorString;
     /* initialize the XML library (only required for MT-safety) */
     xmlInitParser();
@@ -898,7 +898,7 @@ DCMTK_XML2DCM_MAIN_FUNCTION
     /* add line number to debug messages */
     xmlLineNumbersDefault(1);
     xmlGetWarningsDefaultValue = 1;
-    xmlSetGenericErrorFunc(&tmpErrorString, errorFunction);
+    xmlSetGenericErrorFunc(&tmpErrorString, errorXml2DcmFunction);
 
     OFCondition result = EC_Normal;
     const char *opt_ifname = NULL;
